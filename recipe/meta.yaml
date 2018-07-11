@@ -1,6 +1,6 @@
 {% set name = "speg" %}
-{% set version = "0.2" %}
-{% set sha256 = "474b083021379a4e6aa1465879eeaeab3f70cbf474d52f9845f0872741aa3635" %}
+{% set version = "0.3" %}
+{% set sha256 = "10cbef47e168dfc62f14db575cf1c428037a2b881cee6c3cfceda0439c243e71" %}
 
 package:
   name: {{ name|lower }}

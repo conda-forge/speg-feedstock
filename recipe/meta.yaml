@@ -1,36 +1,40 @@
 {% set name = "speg" %}
 {% set version = "0.3" %}
-{% set sha256 = "10cbef47e168dfc62f14db575cf1c428037a2b881cee6c3cfceda0439c243e71" %}
+
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.zip
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/speg-{{ version }}.zip
+  sha256: 10cbef47e168dfc62f14db575cf1c428037a2b881cee6c3cfceda0439c243e71
 
 build:
-  number: 1000
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1001
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
+    - pip
   run:
     - python
 
 test:
   imports:
     - speg
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/avakar/speg
+  summary: A PEG-based parser interpreter with memoization
   license: MIT
-  license_family: MIT
-  summary: 'A PEG-based parser interpreter with memoization.'
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
